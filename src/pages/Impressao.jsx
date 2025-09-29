@@ -1,5 +1,5 @@
 import Destino from "../components/Destino";
-import DB from "../data";
+import DB from "../DB";
 
 function Impressao() {
   const destinos = DB.getDestinos();

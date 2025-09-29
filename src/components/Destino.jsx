@@ -1,5 +1,7 @@
-import DB from "../data";
+import { useState } from "react";
+import DB from "../DB";
 import NotaFiscal from "./NotaFiscal";
+import InputNF from "./InputNF";
 
 function makeTable(notas) {
   const table = [[]];
@@ -24,8 +26,13 @@ function makeTable(notas) {
 }
 
 function Destino({ dest }) {
-  const notas = DB.getNotas(dest);
+  const [notas, setNotas] = useState(DB.getNotas(dest));
   const table = makeTable(notas);
+    
+  function addNota(num, vol) {
+    DB.addNota(dest, num, vol);
+    setNotas([...DB.getNotas(dest)]);
+  }
 
   return (
     <div className="dest-container">
@@ -45,6 +52,11 @@ function Destino({ dest }) {
           {table.map((row) => (
             <tr key={row[0].key}>{row}</tr>
           ))}
+        <tr>
+          <td colSpan={4}>
+            <InputNF addNota={addNota}></InputNF>
+          </td>
+        </tr>
         </tbody>
       </table>
     </div>

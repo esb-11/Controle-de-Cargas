@@ -14,7 +14,7 @@ const DB = (() => {
     };
 
     data[dest] = data[dest] ? data[dest] : [];
-    data[dest].push(nota)
+    data[dest].push(nota)    
   }
 
   function getNotas(dest) {
