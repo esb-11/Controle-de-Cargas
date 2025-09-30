@@ -18,6 +18,9 @@ function InputNF({ addNota }) {
   }
 
   function handleClick() {
+    if (num == "" || vol == "") {
+      return;
+    }
     addNota(num, vol);
     reset();
   }
