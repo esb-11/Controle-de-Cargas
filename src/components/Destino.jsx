@@ -25,9 +25,9 @@ function makeTable(notas) {
   return table;
 }
 
-function Destino({ dest }) {
+function Destino({ dest, hasInput }) {
   const [notas, setNotas] = useState(DB.getNotas(dest));
-  const table = makeTable(notas);
+  const table = notas ? makeTable(notas) : [];
     
   function addNota(num, vol) {
     DB.addNota(dest, num, vol);
@@ -52,11 +52,11 @@ function Destino({ dest }) {
           {table.map((row) => (
             <tr key={row[0].key}>{row}</tr>
           ))}
-        <tr>
+        {hasInput ? (<tr>
           <td colSpan={4}>
             <InputNF addNota={addNota}></InputNF>
           </td>
-        </tr>
+        </tr>) : null}
         </tbody>
       </table>
     </div>

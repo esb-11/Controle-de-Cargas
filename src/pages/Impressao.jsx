@@ -6,10 +6,10 @@ function Impressao() {
 
   return (
     <>
-      <h1>Impressao</h1>
+      <h1>Controle de Transporte de Cargas</h1>
 
       {destinos.map((dest) => (
-        <Destino dest={dest} key={dest}></Destino>
+        <Destino dest={dest} key={dest} hasInput={false}></Destino>
       ))}
     </>
   );
