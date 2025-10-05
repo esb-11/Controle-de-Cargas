@@ -1,12 +1,21 @@
-
-function NotaFiscal({ num, vol }) {
+function NotaFiscal({ nf, deleteNf, righSide }) {
   return (
     <>
       <td>
-        { num }
+        {deleteNf && !righSide && (
+          <button className="left-delete" onClick={(e) => deleteNf(nf.id)}>
+            Delete
+          </button>
+        )}
+        {nf.numero}
       </td>
       <td>
-        { vol }
+        <span>{nf.volumes}</span>
+        {deleteNf && righSide && (
+          <button className="right-delete" onClick={(e) => deleteNf(nf.id)}>
+            Delete
+          </button>
+        )}
       </td>
     </>
   );
